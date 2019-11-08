@@ -1,3 +1,4 @@
+const { default: installExtension, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
@@ -37,6 +38,8 @@ devServer.listen(port,'localhost', function(err){
   if(err) {
     console.error(err);
   }
+
+
   app.on('ready', createWindow)
 
   app.on('window-all-closed', () => {
@@ -58,13 +61,19 @@ let mainWindow
 
 
 function createWindow() {
+
+  installExtension(REACT_DEVELOPER_TOOLS)
+  .then((name) => console.log(`Added Extension:  ${name}`))
+  .catch((err) => console.log('An error occurred: ', err));
+
   mainWindow = new BrowserWindow({
        width: 800,
        height: 600,
        webPreferences: {
            nodeIntegration: true,
        }
-     })
+     });
+ mainWindow.setAutoHideMenuBar(true);
      
   mainWindow.webContents.openDevTools()
 
@@ -73,5 +82,6 @@ function createWindow() {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+
 }
 

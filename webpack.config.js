@@ -45,5 +45,8 @@ module.exports = {
 	  ],
 	  output: {
 		devtoolModuleFilenameTemplate: info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
-	  },
+	  }
+	 
 };
+
+
