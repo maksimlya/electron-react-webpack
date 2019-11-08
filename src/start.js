@@ -73,7 +73,7 @@ function createWindow() {
            nodeIntegration: true,
        }
      });
- mainWindow.setAutoHideMenuBar(true);
+ mainWindow.autoHideMenuBar = true;
      
   mainWindow.webContents.openDevTools()
 
