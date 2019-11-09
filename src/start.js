@@ -1,4 +1,3 @@
-const { default: installExtension, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
@@ -61,10 +60,6 @@ let mainWindow
 
 
 function createWindow() {
-
-  installExtension(REACT_DEVELOPER_TOOLS)
-  .then((name) => console.log(`Added Extension:  ${name}`))
-  .catch((err) => console.log('An error occurred: ', err));
 
   mainWindow = new BrowserWindow({
        width: 800,
